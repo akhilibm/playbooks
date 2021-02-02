@@ -1,0 +1,20 @@
+---
+- name: Install the multiple packages
+  hosts: all
+  vars: 
+   - my_pkg:
+      - httpd
+      - openssh
+      - vsftpd
+   - my_svc: httpd
+  tasks: 
+  - name: Installing the multiple packages
+    yum:
+     name: "{{ my_pkg }}"
+     state: latest
+  - name:
+    systemd:
+     name: "{{ my_svc }}"
+     state: started
+     enabled: true
+    

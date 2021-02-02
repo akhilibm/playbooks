@@ -1,0 +1,25 @@
+---
+- name: configure the tomcat server
+  hosts: all
+  vars: 
+    - tomcat_url: http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.61/bin/apache-tomcat-8.5.61.tar.gz
+    - my_pkg: java
+  tasks:
+  
+  - name: Install java
+    yum:
+     name: "{{ my_pkg }}"
+     state: latest
+
+  - name: download the tomcat package
+    get_url:
+     url: "{{ tomcat_url }}"
+     dest: /tmp
+  - name: extract the tomcat package 
+    unarchive:
+     src: /tmp/apache-tomcat-8.5.61.tar.gz
+     dest: /opt
+     remote_src: yes
+  - name: start the tomcat service 
+    shell: nohup /opt/apache-tomcat-8.5.61/bin/startup.sh
+ 

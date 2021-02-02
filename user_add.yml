@@ -1,0 +1,12 @@
+---
+- name: creating the user test114 
+  hosts: all
+  vars:
+   - username: test114
+   - password: Welcome2ibm2noida
+
+  tasks:
+  - name: creating the user
+    user:
+     name: "{{ username }}"
+     password: "{{ password | password_hash('sha512') }}" 

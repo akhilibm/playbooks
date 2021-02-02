@@ -1,0 +1,20 @@
+---
+- name: creating the user by var_file
+  hosts: all
+  vars_files: 
+   - user_list.yml
+   - password_list.yml
+  vars: 
+   - password: Welcome2ibm2noida 
+  tasks:
+  - name: crating the users
+    user:
+     name: "{{ item }}"
+     password: "{{ password | password_hash('sha512') }}"
+     state: present
+    loop: "{{ users }}" 
+
+
+
+
+  

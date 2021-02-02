@@ -1,0 +1,14 @@
+---
+- name: exporting the user file 
+  hosts: all
+  vars_files:
+   - user_list_new.yml
+  vars:
+   - password: Welcome12345
+  tasks:  
+  - name: creating the users 
+    user:
+     name: "{{ item }}"
+     password: "{{ password | password_hash('sha512') }}"
+     state: present
+    loop: "{{ users }}"  

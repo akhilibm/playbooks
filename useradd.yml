@@ -1,0 +1,13 @@
+---
+- name: user create
+  hosts: all
+  vars:
+   - user_name: jhon
+   - password: Welcome2ibm2noida
+   - user_uid: 5050
+  tasks: 
+  - name:  jhon
+    user:
+      name: "{{ user_name }}"
+      password: "{{ password | password_hash('sha512') }}"
+      state: present

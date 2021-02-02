@@ -1,0 +1,11 @@
+---
+- name: Creating the user vai loop
+  hosts: all
+  vars_files:
+    - user_list.yml
+  tasks:
+  - name: creating the users
+    user: 
+     name: "{{ item.user_name }}" 
+     uid: "{{ item.user_uid }}"
+    loop: "{{ users }}" 

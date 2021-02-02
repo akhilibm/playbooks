@@ -1,0 +1,9 @@
+---
+- name: Installing the packages and starting the sevices 
+  hosts: all
+  tasks:
+  - name: Installing the packages
+    yum:
+     name: sssd
+     state: latest
+    when: ansible_distribution == "SuSe" and ansible_distribution_version == "11"

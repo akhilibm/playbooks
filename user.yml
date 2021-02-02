@@ -1,0 +1,14 @@
+---
+- name: add ibm user
+  hosts: all
+  vars: 
+   - user_name: ibm
+   - password: Welcome2ibm2noida
+   - uid: 5051
+  tasks:
+  - name: creating a user
+    user:
+     name: "{{ user_name }}"
+     password: "{{ password | password_hash('sha512') }}"
+     uid: "{{ uid }}"
+  
