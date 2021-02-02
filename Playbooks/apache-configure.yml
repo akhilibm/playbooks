@@ -10,7 +10,9 @@
    
    - name: 
      systemd: 
-      name: httpd
+      name: 
+        - httpd
+        - firewalld
       state: started
       enabled: true
      
