@@ -1,6 +1,7 @@
 ---
 - name: Install the httpd package start the httpd service creating the html page and then enbale the httpd on firewall
   hosts: all
+  become: true
   tasks: 
    - name: Install the httpd package
      systemd:
