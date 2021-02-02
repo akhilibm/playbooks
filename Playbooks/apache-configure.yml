@@ -1,0 +1,25 @@
+---
+- name: Install the httpd package start the httpd service creating the html page and then enbale the httpd on firewall
+  hosts: all
+  tasks: 
+   - name: Install the httpd package
+     systemd:
+      name: httpd
+      state: stopped
+   
+   - name: 
+     yum: 
+      name: httpd
+      state: absent
+     
+   - name:
+     copy:
+      content: 'This is my testing web server'
+      dest: /var/www/html/index.html
+
+   - name: enable the httpd port in firewalld
+     firewalld:
+      service: http
+      state: disabled
+      immediate: true
+      permanent: true

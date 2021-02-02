@@ -1,0 +1,9 @@
+---
+- name: creating a file on both managed nodes
+  hosts: all
+  tasks: 
+   - name: /tmp/test1.txt
+     file:
+      path: /tmp/test1.txt
+      state: touch
+

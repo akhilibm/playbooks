@@ -1,0 +1,19 @@
+---
+- name: creating the users vai loops and variables 
+  hosts: all
+  vars_files: 
+    - users-list.yml
+    - password_list.yml  
+  tasks:
+  - name: creating the users
+    user:
+     name: "{{ item.user_name }}" 
+     uid: "{{ item.user_uid }}"
+     password: "{{ item }}"
+     state: present
+    loop: 
+     - "{{ users }}"
+     - "{{ password }}"
+     
+    
+

@@ -1,0 +1,21 @@
+---
+- name: Install the apache Package and start the Httpd service 
+  hosts: all
+  become: true
+  vars:
+   packages:
+   - httpd
+   - httpd-tools
+   - httpd-devel
+   - httpd-manual
+  tasks: 
+   - name: Install httpd
+     yum:
+      name: "{{ packages }}"
+      state: latest
+
+
+
+
+
+

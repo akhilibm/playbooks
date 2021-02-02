@@ -1,0 +1,8 @@
+---
+- name: install devlopement tool
+  hosts: all
+  tasks: 
+  - name: devlopement tool
+    yum:
+     name: httpd-tools
+     state: absent

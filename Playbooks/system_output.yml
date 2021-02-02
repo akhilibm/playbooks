@@ -1,0 +1,11 @@
+---
+- name: system output
+  hosts: all
+#  become: true
+  tasks:
+   - name: server uptime
+     command: cat /etc/passwd
+     register: value1
+   - name: debug module
+     debug:
+      var: value1.stdout_lines

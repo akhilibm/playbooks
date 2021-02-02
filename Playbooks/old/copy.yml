@@ -1,0 +1,8 @@
+---
+- name: copy the dir
+  hosts: all
+  tasks:
+   - name: copy the the dir
+     copy:
+       src: /tmp/akhil/
+       dest: /home/akhil/

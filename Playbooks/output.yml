@@ -1,0 +1,26 @@
+---
+- name: check the system health check 
+  hosts: all
+  tasks:
+  - name: check the server outputs 
+    command: uptime
+    register: value1
+ 
+  - name: check the server hostname
+    command: hostname
+    register: value2
+ 
+  - name: debug Module
+    debug:
+     var: value1
+ 
+  - name: debug Module
+    debug: 
+     var: value2
+ 
+
+
+
+   
+
+

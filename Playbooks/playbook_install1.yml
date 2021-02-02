@@ -1,0 +1,12 @@
+---
+- name: installing the RPM
+  hosts: all
+  tasks: 
+  - name: Installaing the RPM
+    yum:
+     name: 
+       - telnet
+       - nfs
+       - ntp 
+     state: latest
+# yum install -y telnet nfs ntp:

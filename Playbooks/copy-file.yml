@@ -1,0 +1,9 @@
+---
+- name: copy a file
+  hosts: all
+  tasks: 
+   - name: /etc/hosts mangenode /etc/ansiblehosts
+     copy:
+      src: /etc/hosts
+      dest: /etc/ansiblehosts 
+  
