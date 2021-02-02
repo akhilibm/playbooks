@@ -4,14 +4,15 @@
   become: true
   tasks: 
    - name: Install the httpd package
-     systemd:
+     yum:
       name: httpd
-      state: stopped
+      state: latest
    
    - name: 
-     yum: 
+     systemd: 
       name: httpd
-      state: absent
+      state: started
+      enabled: true
      
    - name:
      copy:
@@ -21,6 +22,6 @@
    - name: enable the httpd port in firewalld
      firewalld:
       service: http
-      state: disabled
+      state: enabled
       immediate: true
       permanent: true
